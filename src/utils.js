@@ -4,12 +4,14 @@
 
 /**
  * Formats a user's full name from first and last name parts.
+ * Trims whitespace to handle user input from forms.
  * @param {string} firstName
  * @param {string} lastName
  * @returns {string}
  */
 function formatName(firstName, lastName) {
-  return `${firstName} ${lastName}`;
+  const trimmed = `${firstName.trim()} ${lastName.trim()}`;
+  return trimmed;
 }
 
 /**
@@ -30,4 +32,15 @@ function isPresent(value) {
   return value !== null && value !== undefined && value !== '';
 }
 
-module.exports = { formatName, formatDate, isPresent };
+/**
+ * Strips potentially dangerous characters from user-supplied input.
+ * Removes HTML tags and trims surrounding whitespace.
+ * @param {string} input
+ * @returns {string}
+ */
+function sanitizeInput(input) {
+  if (typeof input !== 'string') return '';
+  return input.replace(/<[^>]*>/g, '').trim();
+}
+
+module.exports = { formatName, formatDate, isPresent, sanitizeInput };
