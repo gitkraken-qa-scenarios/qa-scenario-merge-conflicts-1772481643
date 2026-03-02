@@ -1,0 +1,12 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "User authentication and account management service",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test src/**/*.test.js",
+    "dev": "node --watch src/index.js"
+  },
+  "license": "MIT"
+}
